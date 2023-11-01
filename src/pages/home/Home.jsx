@@ -31,14 +31,13 @@ function App() {
         setIsLoading(false);
     }, [context, page]);
 
-    
 
     const handleScroll = () => {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
         const documentHeight = homeRef.current.scrollHeight;
-// const rectangleBottom = rectangle.getBoundingClientRect().bottom;
-        if (scrollY + windowHeight >= documentHeight - 10) {
+        // const rectangleBottom = rectangle.getBoundingClientRect().bottom;
+        if (scrollY + windowHeight >= documentHeight) {
             setIsLoading(true)
             setTimeout(() => {
                 setPage(page + 1)
