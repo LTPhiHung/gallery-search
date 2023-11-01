@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./home.css";
 import Search from "../../component/search/Search";
 import Images from "../../component/images/Images";
@@ -11,6 +11,7 @@ function App() {
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
 
+    const homeRef = useRef(null);
     const loadImages = async () => {
         try {
             const response = await fetch(
@@ -35,9 +36,9 @@ function App() {
     const handleScroll = () => {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-
-        if (scrollY + windowHeight >= documentHeight && !isLoading) {
+        const documentHeight = homeRef.current.scrollHeight;
+// const rectangleBottom = rectangle.getBoundingClientRect().bottom;
+        if (scrollY + windowHeight >= documentHeight - 10) {
             setIsLoading(true)
             setTimeout(() => {
                 setPage(page + 1)
@@ -54,7 +55,7 @@ function App() {
     });
 
     return (
-        <div className="container">
+        <div className="container" ref={homeRef}>
             <Search  context={context} setContext={setContext} setOldImage={setOldImage} setPage={setPage} />
             <Images imageUrls={imageUrls} />
             {isLoading &&  <Loading />}

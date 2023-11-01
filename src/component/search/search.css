@@ -19,12 +19,13 @@
 .search-btn {
     outline: none;
     margin-left: 16px;
-    padding: 8px 16px;
+    padding: 8px 24px;
     font-size: 16px;
     background-color: #080A1A;
-    border: #080A1A solid 1px;
+    border: #080A1A solid 2px;
     color: #fff;
-    border-radius: 5%;
+    border-radius: 5px;
+    cursor: poiner;
 }
 
 .search-btn:hover {

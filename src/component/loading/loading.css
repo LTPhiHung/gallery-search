@@ -1,8 +1,8 @@
 .container-loading{
     display: flex;
+    align-items: center;
     justify-content: center;
 }
-
 .loading{
     content: '';
     width: 40px;
