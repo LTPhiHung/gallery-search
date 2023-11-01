@@ -32,3 +32,16 @@
     background-color: #F20000;
     border: #F20000 solid 1px;
 }
+
+@media (max-width: 375px) {
+    .search-input {
+        width: 180px;
+    }
+}
+@media (min-width: 376px) and (max-width: 767px) {
+    .search-input {
+        width: 240px;
+    }
+}
+
+

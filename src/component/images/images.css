@@ -1,27 +1,68 @@
 .container-gallery {
     padding: 20px;
     width: 100%;
-}
-.gallery {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
 }
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-gap: 20px;
+}
+
 .gallery .gallery-item {
     height: 300px;
     width: 300px;
-    margin: 10px;
     overflow: hidden;
     border-radius: 5%;
 }
+
 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 5%;
-    transition: 0.2 linear;
+    transition: transform 0.2s ease; /* Chú ý thêm từ "0.2 ease" thành "0.2s ease" */
 }
+
 .gallery .gallery-item:hover img {
     transform: scale(1.2);
+}
+
+
+@media (max-width: 375px) {
+    .gallery {
+        grid-template-columns: repeat(1, 100%);
+        grid-gap: 10px;
+    }
+
+    .gallery .gallery-item {
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 767px) {
+    .gallery {
+        grid-template-columns: repeat(2, 50%);
+        grid-gap: 10px;
+    }
+
+    .gallery .gallery-item {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(3, 33.33%);
+    }
+
+    .gallery .gallery-item {
+        height: 200px;
+        width: 200px;
+    }
 }
