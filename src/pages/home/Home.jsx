@@ -45,7 +45,7 @@ function Home() {
         const windowHeight = window.innerHeight;
         const documentHeight = homeRef.current.scrollHeight;
         // const rectangleBottom = rectangle.getBoundingClientRect().bottom;
-        if (scrollY + windowHeight >= documentHeight) {
+        if (scrollY + windowHeight >= documentHeight - 10) {
             setIsLoading(true);
             setPage((prevPage) => prevPage + 1);
         }
