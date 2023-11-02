@@ -4,14 +4,16 @@ import Search from "../../component/search/Search";
 import Images from "../../component/images/Images";
 import Loading from "../../component/loading/Loading";
 
-function App() {
+function Home() {
     const [context, setContext] = useState("random");
     const [imageUrls, setImageUrls] = useState([]);
     const [oldImage, setOldImage] = useState([]);
     const [page, setPage] = useState(1);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isSearching, setIsSearching] = useState(true);
 
     const homeRef = useRef(null);
+
     const loadImages = async () => {
         try {
             const response = await fetch(
@@ -27,10 +29,16 @@ function App() {
     };
 
     useEffect(() => {
-        loadImages();
-        setIsLoading(false);
-    }, [context, page]);
+        const timeout = setTimeout(() => {
+            setIsLoading(false);
+            loadImages();
+            setIsSearching(false);
+        }, 2000);
 
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [context, page]);
 
     const handleScroll = () => {
         const scrollY = window.scrollY;
@@ -38,10 +46,8 @@ function App() {
         const documentHeight = homeRef.current.scrollHeight;
         // const rectangleBottom = rectangle.getBoundingClientRect().bottom;
         if (scrollY + windowHeight >= documentHeight) {
-            setIsLoading(true)
-            setTimeout(() => {
-                setPage(page + 1)
-            }, 2000);
+            setIsLoading(true);
+            setPage((prevPage) => prevPage + 1);
         }
     };
 
@@ -55,11 +61,20 @@ function App() {
 
     return (
         <div className="container" ref={homeRef}>
-            <Search  context={context} setContext={setContext} setOldImage={setOldImage} setPage={setPage} />
-            <Images imageUrls={imageUrls} />
-            {isLoading &&  <Loading />}
+            <Search 
+                context={context}
+                setContext={setContext} 
+                setOldImage={setOldImage} 
+                setPage={setPage} 
+                setIsLoading={setIsLoading}
+                setIsSearching={setIsSearching}
+                page={page}
+            />
+            {!isSearching && <Images imageUrls={imageUrls}/>}
+            {isLoading &&  <Loading isSearching={isSearching} />}
+        
         </div>
     );
 }
 
-export default App;
+export default Home;

@@ -1,9 +1,9 @@
 import React from 'react'
 import './loading.css'
 
-function Loading() {
+function Loading({isSearching}) {
     return (
-        <div className='container-loading'>  
+        <div className={`container-loading ${isSearching ? 'isSearching' : ''}`}>  
             <div className='loading'>
 
             </div>  

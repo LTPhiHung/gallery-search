@@ -30,15 +30,15 @@
 
 .search-btn:hover {
     background-color: #F20000;
-    border: #F20000 solid 1px;
+    border: #F20000 solid 2px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 377px) {
     .search-input {
         width: 180px;
     }
 }
-@media (min-width: 376px) and (max-width: 767px) {
+@media (min-width: 378px) and (max-width: 767px) {
     .search-input {
         width: 240px;
     }

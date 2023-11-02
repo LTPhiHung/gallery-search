@@ -1,7 +1,7 @@
 import './search.css'
 import React, { useState } from 'react'
 
-function Search({setContext, setImageUrls, setOldImage, setPage}) {
+function Search({context, setContext, setOldImage, setPage, setIsLoading, setIsSearching, page}) {
     const [inputValue, setInputValue] = useState("");
 
     const handleInputChange = (e) => {
@@ -9,9 +9,18 @@ function Search({setContext, setImageUrls, setOldImage, setPage}) {
     };
 
     const handleClick = () => {
-        setPage(1);
-        setOldImage([]);
-        setContext(inputValue);
+        if(inputValue !== context) {
+            setIsLoading(true);
+            setIsSearching(true);
+            setOldImage([]);
+            if(inputValue === '') {
+                setPage(page + 1);
+                setContext('random')
+            } else {
+                setPage(1);
+                setContext(inputValue);
+            }
+        } 
     };
 
     return (

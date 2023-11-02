@@ -32,7 +32,7 @@ img {
 }
 
 
-@media (max-width: 375px) {
+@media (max-width: 377px) {
     .gallery {
         grid-template-columns: repeat(1, 100%);
         grid-gap: 10px;
@@ -44,7 +44,7 @@ img {
     }
 }
 
-@media (min-width: 376px) and (max-width: 767px) {
+@media (min-width: 378px) and (max-width: 767px) {
     .gallery {
         grid-template-columns: repeat(2, 50%);
         grid-gap: 10px;

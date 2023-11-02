@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.isSearching{
+    width: 100%;
+    height: calc(100vh - 90px);
+}
 .loading{
     content: '';
     width: 40px;
