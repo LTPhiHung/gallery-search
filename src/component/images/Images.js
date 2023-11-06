@@ -1,11 +1,11 @@
 import './images.css'
 import React from 'react'
 
-function Images({imageUrls, isLoading}) {
+function Images({imageUrls, isSearching}) {
   return (
     <div className='container-gallery'>
         {
-          !isLoading ? (
+          !isSearching ? (
             <div className='gallery'>
               {imageUrls.map((img, index) => (
                   <div className='gallery-item'>

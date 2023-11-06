@@ -71,7 +71,7 @@ function Home() {
                 setIsSearching={setIsSearching}
                 page={page}
             />
-            <Images imageUrls={imageUrls} isLoading={isLoading}/>
+            <Images imageUrls={imageUrls} isSearching={isSearching}/>
             {isLoading &&  <Loading isSearching={isSearching} />}
         
         </div>
