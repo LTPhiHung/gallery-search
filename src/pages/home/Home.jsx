@@ -30,15 +30,15 @@ function Home() {
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            setIsLoading(false);
             loadImages();
+            setIsLoading(false);
             setIsSearching(false);
-        }, 2000);
+        }, 3000);
 
         return () => {
             clearTimeout(timeout);
         };
-    }, [context, page]);
+    }, [context, page, isLoading, isSearching]);
 
     const handleScroll = () => {
         const scrollY = window.scrollY;
@@ -65,12 +65,13 @@ function Home() {
                 context={context}
                 setContext={setContext} 
                 setOldImage={setOldImage} 
+                setImageUrls={setImageUrls}
                 setPage={setPage} 
                 setIsLoading={setIsLoading}
                 setIsSearching={setIsSearching}
                 page={page}
             />
-            {!isSearching && <Images imageUrls={imageUrls}/>}
+            <Images imageUrls={imageUrls} isLoading={isLoading}/>
             {isLoading &&  <Loading isSearching={isSearching} />}
         
         </div>
